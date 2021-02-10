@@ -184,6 +184,9 @@ def create():
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     button = soup.find('button', attrs={'class':'btn btn-primary btn-entry'}).text
     print(clock(), ':: {}'.format(button))
+    # sometimes the site jumbles credit card number and idk why
+    # in the case of this event the code below runs and it simply quits the browser
+    # if you want you can insert a sleep function under the submit button which buys time for you to correct the jumbled mistake
     if button == 'ENTRY DRAW':
         driver.quit()
 
